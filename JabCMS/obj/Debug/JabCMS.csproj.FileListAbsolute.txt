@@ -50,6 +50,6 @@ C:\Users\Dustin\Source\Repos\JabCMS\JabCMS\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Dustin\Source\Repos\JabCMS\JabCMS\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Dustin\Source\Repos\JabCMS\JabCMS\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Dustin\Source\Repos\JabCMS\JabCMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Dustin\Source\Repos\JabCMS\JabCMS\obj\Debug\JabCMS.csprojResolveAssemblyReference.cache
 C:\Users\Dustin\Source\Repos\JabCMS\JabCMS\obj\Debug\JabCMS.dll
 C:\Users\Dustin\Source\Repos\JabCMS\JabCMS\obj\Debug\JabCMS.pdb
+C:\Users\Dustin\Source\Repos\JabCMS\JabCMS\obj\Debug\JabCMS.csprojResolveAssemblyReference.cache

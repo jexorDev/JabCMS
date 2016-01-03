@@ -7,8 +7,8 @@ namespace JabCMS.Models
 {
     public class Author
     {
-        string Id { get; set; }
-        string Name { get; set; }
-        string BriefBio { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string BriefBio { get; set; }
     }
 }

@@ -7,10 +7,11 @@ namespace JabCMS.Models
 {
     public class Post
     {
-        int Id { get; set; }
-        string Title { get; set; }
-        Category Category { get; set; }
-        DateTime DateCreated { get; set; }
-        string Content { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public DateTime DateCreated { get; set; }
+        public string Content { get; set; }
+
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

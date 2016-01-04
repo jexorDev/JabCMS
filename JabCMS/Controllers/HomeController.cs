@@ -1,8 +1,12 @@
-﻿using System;
+﻿using JabCMS.DAL;
+using JabCMS.Models;
+using JabCMS.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace JabCMS.Controllers
 {
@@ -10,7 +14,13 @@ namespace JabCMS.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            JabCMSContext db = new JabCMSContext();
+            HomeIndexViewModel vm = new HomeIndexViewModel();
+
+            vm.LatestPost = db.Posts.OrderByDescending(x => x.DateCreated).Include(x => x.Author).ToList().FirstOrDefault();
+            //vm.LatestPost.Author = db.Authors.Where(x => x.AuthorId == db.Posts.OrderByDescending(y => y.DateCreated).Single().Author.AuthorId) as Author;
+                                    
+            return View(vm);
         }
 
         public ActionResult About()

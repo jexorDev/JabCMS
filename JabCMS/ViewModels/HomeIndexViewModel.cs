@@ -6,8 +6,8 @@ using System.Web;
 
 namespace JabCMS.ViewModels
 {
-    public class LayoutViewModel
+    public class HomeIndexViewModel
     {
-        public ICollection<Category> Categories { get; set; }
+        public Post LatestPost { get; set; }
     }
 }

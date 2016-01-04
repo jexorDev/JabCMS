@@ -1,12 +1,15 @@
-﻿@{
+﻿@model JabCMS.ViewModels.HomeIndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>Most Recent</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p class="lead">@Model.LatestPost.Title</p>
+    <p>@Model.LatestPost.Content</p>
+    <p><b>By:</b>@Model.LatestPost.Author.Name</p>
     <p>
-      <a href="http://asp.net" class="btn btn-primary btn-large">Read more</a>
+      @Html.ActionLink("Read more", "Details", "Post", new { Model.LatestPost.Id }, null)
       <a href="http://asp.net" class="btn">All posts</a>
     </p>
 </div>

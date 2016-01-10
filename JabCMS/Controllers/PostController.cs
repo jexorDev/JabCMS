@@ -19,7 +19,9 @@ namespace JabCMS.Controllers
         // GET: /Post/
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            return View(db.Posts.Include(x => x.Author)
+                .Include(x => x.Categories)
+                .ToList());
         }
 
         // GET: /Post/Details/5
@@ -41,11 +43,25 @@ namespace JabCMS.Controllers
         public ActionResult Create()
         {
             PostCreateViewModel vm = new PostCreateViewModel();
-            SelectList authorSelectList = new SelectList(db.Authors, "AuthorId", "Name");
-            vm.AuthorSelectList = authorSelectList;
+            vm.AuthorSelectList = new SelectList(db.Authors, "AuthorId", "Name");
+
+            //ViewBag.AllCategories = db.Categories();
+            vm.SelectedCategories = new List<AssignedPostCategory>(); 
+
+            foreach(var category in db.Categories)
+            {
+                vm.SelectedCategories.Add(new AssignedPostCategory()
+                    {
+                        CategoryId = category.Id,
+                        Name = category.Name,
+                        Assigned = false
+                    });
+            }
+
             return View(vm);
         }
 
+        
         // POST: /Post/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

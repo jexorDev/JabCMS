@@ -7,7 +7,9 @@
     <h1>Most Recent</h1>
     <p class="lead">@Model.LatestPost.Title</p>
     <p>@Model.LatestPost.Content</p>
-    <p><b>By:</b>@Model.LatestPost.Author.Name</p>
+    <p><b>By:</b>@Model.LatestPost.Author.Name
+       <b>On:</b>@Html.DisplayFor(m => m.LatestPost.DateCreated)
+       <b>In:</b>@Model.LatestPost.Categories.FirstOrDefault()</p>
     <p>
       @Html.ActionLink("Read more", "Details", "Post", new { Model.LatestPost.Id }, null)
       <a href="http://asp.net" class="btn">All posts</a>

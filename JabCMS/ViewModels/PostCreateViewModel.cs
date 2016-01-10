@@ -12,5 +12,7 @@ namespace JabCMS.ViewModels
         public Post Post { get; set; }
         public int SelectedAuthor { get; set; }
         public IEnumerable<SelectListItem> AuthorSelectList { get; set; }
+
+        public IList<AssignedPostCategory> SelectedCategories { get; set; }
     }
 }

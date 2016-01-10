@@ -1,45 +1,45 @@
 ﻿@model IEnumerable<JabCMS.Models.Post>
 
 @{
-    ViewBag.Title = "Index";
+ ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="panel panel-default">
+  <div class="panel-body">
+   <h1>Posts</h1>
+  </div>
+ </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@foreach (var item in Model)
+{
+
+ <h2 style="font-stretch:wider"><i>@item.Title</i></h2>
+
+ <ul class="list-inline">
+  @foreach (var catgeory in item.Categories)
+  {
+   <li>@catgeory.Name</li>
+  }
+ </ul>
+
+
+ <div class="well">
+  <table style="width:100%">
+   <tr>
+    <td style="width:20%;border-right:groove;border-color:whitesmoke;padding-right:5em">
+     <button class="btn btn-info btn-xs">@Html.ActionLink(@item.Author.Name, "Details", "Author", new { id = item.Author.AuthorId }, new { @style="color:white" })</button>
+     <button class="btn btn-default btn-xs disabled">@item.DateCreated.ToString("M/d/yyy")</button>
+    </td>
+    <td style="width:60%;padding-left:5em">
+     <i>@item.Content</i>
+    </td>
+    <td style="width:20%">
+     <button class="btn btn-success" style="margin-left:5em;color:white">@Html.ActionLink("Read more", "Details", "Post", new { item.Id }, new { @style="color:white" })</button>
+    </td>
+   </tr>
+  </table>
+ </div>
 }
 
-</table>
+

@@ -12,7 +12,7 @@
        <b>In:</b>@Model.LatestPost.Categories.FirstOrDefault()</p>
     <p>
       @Html.ActionLink("Read more", "Details", "Post", new { Model.LatestPost.Id }, null)
-      <a href="http://asp.net" class="btn">All posts</a>
+      @Html.ActionLink("All posts", "Index", "Post")
     </p>
 </div>
 

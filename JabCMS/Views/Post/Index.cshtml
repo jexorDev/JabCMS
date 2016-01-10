@@ -7,6 +7,9 @@
 <div class="panel panel-default">
   <div class="panel-body">
    <h1>Posts</h1>
+   <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+    Newest to Oldest <span class="caret"/>
+   </button>
   </div>
  </div>
 
@@ -14,7 +17,7 @@
 @foreach (var item in Model)
 {
 
- <h2 style="font-stretch:wider"><i>@item.Title</i></h2>
+ <h2><i>@item.Title</i></h2>
 
  <ul class="list-inline">
   @foreach (var catgeory in item.Categories)

@@ -16,7 +16,7 @@ namespace JabCMS.Controllers
     {
         private JabCMSContext db = new JabCMSContext();
 
-        // GET: /Author/
+        // GET: /Author/ test1
         public ActionResult Index()
         {
             return View(db.Authors.ToList());

@@ -83,13 +83,6 @@ namespace JabCMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="AuthorId,Name,BriefBio")] Author author, HttpPostedFileBase image)
         {
-            if (false)
-            {
-                //var fileName = Path.GetFileName(file.FileName);
-                //var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
-                //file.SaveAs(path);
-            }
-
             if (image.ContentLength > 0)
             {
                 byte[] imageData = null;

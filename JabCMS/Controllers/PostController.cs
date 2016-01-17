@@ -20,8 +20,9 @@ namespace JabCMS.Controllers
         public ActionResult Index()
         {
             return View(db.Posts.Include(x => x.Author)
-                .Include(x => x.Categories)
-                .ToList());
+                                .Include(x => x.Categories)
+                                .OrderBy(x => x.DateCreated)
+                                .ToList());
         }
 
         // GET: /Post/Details/5

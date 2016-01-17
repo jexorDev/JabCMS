@@ -10,5 +10,6 @@ namespace JabCMS.Models
         public int AuthorId { get; set; }
         public string Name { get; set; }
         public string BriefBio { get; set; }
+        public byte[] ProfilePicture { get; set; }
     }
 }

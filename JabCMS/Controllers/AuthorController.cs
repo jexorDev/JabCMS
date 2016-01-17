@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using JabCMS.Models;
 using JabCMS.DAL;
+using System.IO;
 
 namespace JabCMS.Controllers
 {
@@ -33,6 +34,7 @@ namespace JabCMS.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(author);
         }
 
@@ -79,8 +81,26 @@ namespace JabCMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="AuthorId,Name,BriefBio")] Author author)
+        public ActionResult Edit([Bind(Include="AuthorId,Name,BriefBio")] Author author, HttpPostedFileBase image)
         {
+            if (false)
+            {
+                //var fileName = Path.GetFileName(file.FileName);
+                //var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                //file.SaveAs(path);
+            }
+
+            if (image.ContentLength > 0)
+            {
+                byte[] imageData = null;
+                using (var binaryReader = new BinaryReader(image.InputStream))
+                {
+                    imageData = binaryReader.ReadBytes(image.ContentLength);
+                }
+
+                author.ProfilePicture = imageData;
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(author).State = EntityState.Modified;

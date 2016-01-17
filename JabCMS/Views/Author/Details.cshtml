@@ -26,8 +26,33 @@
             @Html.DisplayFor(model => model.BriefBio)
         </dd>
 
+       <dd>
+        <div class="thumbnail col-md-4">
+                 
+         @{
+              if(Model.ProfilePicture == null)
+              {
+                  <h3>No profile pic uploaded!</h3>
+              }
+              else
+              {
+                 <img class="media-object"
+                  src=@Html.Raw("\"data:image/jpeg;base64," + Convert.ToBase64String(Model.ProfilePicture) + "\"")                  
+                  alt=" ...">
+              }
+         }                 
+          <div class="caption">
+           <h3>hello</h3>
+           <p>content goes here</p>
+          </div>
+                  
+        </div>
+          
+       </dd>
+
     </dl>
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.AuthorId }) |
     @Html.ActionLink("Back to List", "Index")

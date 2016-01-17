@@ -17,12 +17,24 @@ namespace JabCMS.Controllers
         private JabCMSContext db = new JabCMSContext();
 
         // GET: /Post/
-        public ActionResult Index()
+        public ActionResult Index(string orderBy, string searchString)
         {
-            return View(db.Posts.Include(x => x.Author)
+            var posts = db.Posts.Include(x => x.Author)
                                 .Include(x => x.Categories)
-                                .OrderBy(x => x.DateCreated)
-                                .ToList());
+                                .ToList();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                posts = posts.Where(x => x.Title.Contains(searchString) ||
+                                         x.Author.Name.Contains(searchString)).ToList();
+            }
+
+            if (orderBy == null)
+                posts.OrderBy(x => x.Title);
+            else 
+                posts.OrderBy(x => x.DateCreated);
+
+            return View(posts);
         }
 
         // GET: /Post/Details/5

@@ -7,7 +7,13 @@
 <div class="panel panel-default">
   <div class="panel-body">
    <h1>Posts</h1>
-   @Html.DropDownList("orderByCombobox", new SelectList(Model,"Id", "Title"))
+   @Html.DropDownList("orderByCombobox", new SelectList(Model, "Id", "Title"), new { id="myOrderByCombobox" })   
+   @using (Html.BeginForm())
+   {
+    <h4>Search: </h4>
+    @Html.TextBox("SearchString")
+    <input type="submit" value="Search"/>
+   }
    </div>
  </div>
 
@@ -16,7 +22,7 @@
 {
 
  <h2><i>@item.Title</i></h2>
-
+  
  <ul class="list-inline">
   @foreach (var catgeory in item.Categories)
   {
@@ -48,17 +54,14 @@
 
  
 <script type="text/javascript">
-
- $(document).ready(function () {
-  $('#orderByCombobox').selected(function () {
-   document.body.style.backgroundColor = red;
-  });
+ $('#myOrderByCombobox').change(function () {
+  alert('change');
+  @*$.ajax({
+   url:{@Url.Action("Index", "Post", new { orderBy="test" })}
+   });*@
+  
  });
- //$(function () {
- // $("#orderByCombobox").change(function (evt) {
- //  alert("changed");
- // });
- //});
+
 </script>
 
 }
